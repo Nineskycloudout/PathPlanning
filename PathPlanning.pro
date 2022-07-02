@@ -17,13 +17,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    mydraw.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    mydraw.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    mydraw.ui
 
 TRANSLATIONS += \
     PathPlanning_zh_CN.ts
