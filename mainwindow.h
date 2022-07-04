@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPainter>
+#include"graph.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,8 +17,26 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void mousePressEvent(QMouseEvent *);
+    void paintEvent(QPaintEvent *event);
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
+
+
+    /*
+    bool press1;
+    bool press2;
+    QPoint point1;
+    QPoint point2;
+    QList<QPoint> point_list1;
+    QList<QPoint> point_list2;
+*/
 };
+
+
+
+
 #endif // MAINWINDOW_H

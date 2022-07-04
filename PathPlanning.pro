@@ -18,12 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    mydraw.cpp
-
+    mydraw.cpp \
+    bounding.cpp \
+    graph.cpp
 HEADERS += \
     mainwindow.h \
-    mydraw.h
-
+    mydraw.h \
+    graph.h
 FORMS += \
     mainwindow.ui \
     mydraw.ui
