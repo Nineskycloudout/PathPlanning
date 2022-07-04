@@ -1,7 +1,4 @@
 #include "bounding.h"
-#include <QLineF>
-#include <QPointF>
-#include <QtMath>
 
 bounding::bounding(QVector<QPoint> origPoints)
 {

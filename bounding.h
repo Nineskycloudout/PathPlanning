@@ -4,6 +4,9 @@
 #include <QLine>
 #include <QVector>
 #include <QPolygon>
+#include <QtMath>
+#include <QLineF>
+#include <QPointF>
 
 class bounding
 {
