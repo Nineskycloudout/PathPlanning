@@ -15,7 +15,7 @@ QPoint bounding::getCross(QLine line1, QLine line2)
     QLineF linef1(pointf1,pointf2);
     QLineF linef2(pointf3,pointf4);
     QLineF::IntersectType type = linef1.intersects(linef2,&crossF);
-    if (type != QLineF::BoundedIntersection)
+    if (type != 1 && type!=2)
         crossF = QPointF(0,0);
     QPoint cross(crossF.x(),crossF.y());
     return cross;
@@ -56,9 +56,9 @@ void bounding::buildBounding()
 
     if(orLines.length()>4)
         for(int i = 0; i < orLines.length() - 3; i++)
-            for(int j = i + 1; i < orLines.length() - 2; j++)
-                for(int k = j + 1; j < orLines.length() - 1; k++)
-                    for(int l = k + 1; k < orLines.length(); l++)
+            for(int j = i + 1; j < orLines.length() - 2; j++)
+                for(int k = j + 1; k < orLines.length() - 1; k++)
+                    for(int l = k + 1; l < orLines.length(); l++)
                     {
                         QVector<QPoint> crossPoints;
                         // 得到四条直线的交点
@@ -66,6 +66,8 @@ void bounding::buildBounding()
                         crossPoints.push_back(getCross(orLines[j],orLines[k]));
                         crossPoints.push_back(getCross(orLines[k],orLines[l]));
                         crossPoints.push_back(getCross(orLines[l],orLines[i]));
+                        if(crossPoints[0] == QPoint(0,0)||crossPoints[1] == QPoint(0,0)||crossPoints[2] == QPoint(0,0)||crossPoints[3] == QPoint(0,0))
+                            break; //如果多边形不符合包围盒条件，跳过
                         QPolygon crossPolygon(crossPoints); // 交点多边形
                         if(crossPolygon.containsPoint(inPoint,Qt::OddEvenFill))
                         {
@@ -74,6 +76,8 @@ void bounding::buildBounding()
                                 minPoly = crossPolygon;
                         }
                     }
+    for(int i = 0;i<minPoly.length();i++)
+        points.push_back(minPoly[i]);
 }
 
 int bounding::getS()
